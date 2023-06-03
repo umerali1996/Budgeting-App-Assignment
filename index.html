@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <title>Budgeting App</title>
+</head>
+
+<body>
+    <main>
+        <div class="logo">
+            <img src="./images/logo-removebg-preview.png" alt="">
+        </div>
+
+        <!-- Budget Calculation -->
+        <div class="calculate">
+            <!-- Budget -->
+            <div class="budget">
+                <div class="left">
+                    <img src="./images/trending_up_FILL1_wght400_GRAD0_opsz48.png" alt="">
+                </div>
+                <div class="right">
+                    <h3>Total Budget</h3>
+                    <h3>$<span id="budgetAmount">0</span></h3>
+                </div>
+                <div class="edit-delete-budget">
+
+                </div>
+            </div>
+            <!-- Expense -->
+            <div class="expense">
+                <div class="left">
+                    <img src="./images/trending_down_FILL1_wght400_GRAD0_opsz48.png" alt="">
+                </div>
+                <div class="right">
+                    <h3>Total Expenses</h3>
+                    <h3>$<span id="expenseAmount">0</span></h3>
+                </div>
+            </div>
+            <!-- Remaining Budget -->
+            <div class="remaining-budget">
+                <div class="left">
+                    <img src="./images/timeline_FILL1_wght400_GRAD0_opsz48.png" alt="">
+                </div>
+                <div class="right">
+                    <h3>Remaining Budget</h3>
+                    <h3>$<span id="remainingBudget">0</span></h3>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="content">
+        <!-- Add/Remove Expense -->
+        <div class="add-remove-expense">
+            <form action="./index.html" method="get" id="addExpense">
+
+
+                <label for="category">Category</label>
+                <select name="category">
+                    <option value="Home">Home</option>
+                    <option value="Health">Health</option>
+                    <option value="Groceries">Groceries</option>
+                    <option value="Shopping">Shopping</option>
+                </select>
+
+                <label for="description">Description</label>
+                <input type="text" placeholder="Enter Description" name="description" required>
+
+                <label for="expense">Amount</label>
+                <input type="number" placeholder="Enter Amount" name="expense" required>
+                <div id="errorMessageTwo"></div>
+
+                <label for="date">Date</label>
+                <input type="date" name="date" required>
+
+                <button class="btn" type="submit" onclick="return pushData()">Add Expense</button>
+            </form>
+        </div>
+
+        <!-- Expenses Display Chart -->
+        <div id="expenseDisplay">
+            <!-- Expenses will be added through JS -->
+        </div>
+
+        <!-- Add Budget -->
+        <div class="add-remove-budget">
+
+
+            <label for="budgetAmount">Budget Amount</label>
+            <input type="number" name="budget" required placeholder="Enter Budget Amount">
+
+            <div id="errorMessage"></div>
+            <button class="btn btn2" type="submit" onclick="return budgetAmount()">Add Budget</button>
+
+            <button class="btn btn2" onclick="showUpdateField()">Edit</button>
+
+
+
+            <div id="updateField" style="display: none;">
+                <input type="number" id="newBudgetAmount" placeholder="Enter New Budget Amount">
+                <button class="btn" onclick="updateBudgetAmount()">Save</button>
+            </div>
+            <button class="btn btn2" onclick="showAddCategory()">Add Category</button>
+            <div id="addCategory">
+                <input type="text" name="addNewCategory" placeholder="Enter New Category">
+                <button class="btn" onclick="addCategory()">Submit</button>
+            </div>
+        </div>
+    </div>
+    <script src="./app.js"></script>
+</body>
+
+</html>
